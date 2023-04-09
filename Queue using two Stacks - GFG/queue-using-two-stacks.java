@@ -58,9 +58,11 @@ class StackQueue
     void Push(int x)
     {
 	   // Your code here
+	   
 	   while(s1.size() > 0){
 	       s2.push(s1.pop());
 	   }
+	   
 	   s1.push(x);
 	   
 	   while(s2.size() > 0){
@@ -73,6 +75,7 @@ class StackQueue
     int Pop()
     {
 	   // Your code here
+	   
 	   if(s1.size() == 0){
 	       return -1;
 	   }else{
