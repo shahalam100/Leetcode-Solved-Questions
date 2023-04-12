@@ -59,26 +59,20 @@ class Solution {
     public static int dominantPairs(int n, int[] arr) {
         // code here
         
-        for(int i=n/2 ;i<n;i++){
-           arr[i]=arr[i]*5;
-       }
-        Arrays.sort(arr, n / 2, n);
-        Arrays.sort(arr, 0, n / 2);
+        Arrays.sort(arr,0,n/2);
+        Arrays.sort(arr,n/2,n);
         
-        int ans =0;
-        for(int i=n/2-1;i>=0;i--){
-            int s = n/2;
-            int e = n-1;
-            while(s<=e){
-                int mid = (s+e)/2;
-                if(arr[mid]<=arr[i]) s=mid+1;
-                else e=mid-1;
+        int i = 0, j = n/2;
+        int ans = 0;
+        
+        while(i < n/2 && j < n){
+            if(arr[i]>=5*arr[j]){
+                ans += (n/2-i);
+                j++;
+            }else{
+                i++;
             }
-            
-            if(e<n/2) break;
-            ans = ans + e - n/2 + 1;
         }
-        
         return ans;
     }
 }
